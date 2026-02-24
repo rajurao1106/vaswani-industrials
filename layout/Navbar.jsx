@@ -49,7 +49,7 @@ export default function Navbar() {
       </div>
 
       {/* ===== Main Navbar ===== */}
-      <nav className="px-4 md:px-14 flex items-center justify-between py-4">
+      <nav className="px-4 md:px-14 flex items-center justify-between py-3">
         {/* Logo */}
         <div className="w-36">
           <Image src={logo} alt="logo" priority />

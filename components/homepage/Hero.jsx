@@ -3,8 +3,8 @@ import hero from "@/public/homepage/Web-slider-factory1.webp";
 
 export default function Hero() {
   return (
-    <section className="px-3 py-3 max-lg:pt-20 md:px-6 md:py-4">
-      <div className="relative h-[90vh] md:h-screen w-full overflow-hidden pt-20 rounded-2xl md:rounded-3xl">
+    <section className="px-3 py-3 max-lg:pt-20  md:px-6 pt-26">
+      <div className="relative h-[90vh] md:h-screen w-full overflow-hidden rounded-2xl md:rounded-3xl">
         {/* Background Image */}
         <Image
           src={hero}
