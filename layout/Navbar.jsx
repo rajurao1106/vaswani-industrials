@@ -26,7 +26,7 @@ export default function Navbar() {
         <div className=" items-center flex gap-6 text-gray-700">
           <div className="flex gap-2">
             <span className="font-semibold">CALL US</span>
-            <span>+91 771354022</span>
+            <span>+91 7713540221</span>
           </div>
           <div className="flex gap-2">
             <span className="font-semibold">EMAIL US</span>
