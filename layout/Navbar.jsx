@@ -69,12 +69,12 @@ export default function Navbar() {
             Investors <ChevronDown size={14} />
           </li>
           <li className="hover:text-[#43bfb1] cursor-pointer">Careers</li>
-          <li className="hover:text-[#43bfb1] cursor-pointer">Contact</li>
+          {/* <li className="hover:text-[#43bfb1] cursor-pointer"></li> */}
         </ul>
 
         {/* Desktop Button */}
         <button className="hidden md:block rounded-md bg-[#43bfb1] px-4 py-2 text-sm text-white hover:bg-[#3ba599]">
-          Get A Quote
+       Contact Us
         </button>
 
         {/* Mobile Hamburger */}
@@ -101,10 +101,10 @@ export default function Navbar() {
             Investors <ChevronDown size={14} />
           </div>
           <div className="hover:text-[#43bfb1]">Careers</div>
-          <div className="hover:text-[#43bfb1]">Contact</div>
+          {/* <div className="hover:text-[#43bfb1]"></div> */}
 
           <button className="w-full mt-4 rounded-md bg-[#43bfb1] py-2 text-white">
-            Get A Quote
+          Contact
           </button>
         </div>
       )}
