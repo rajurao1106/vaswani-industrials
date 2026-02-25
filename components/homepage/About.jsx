@@ -5,7 +5,6 @@ export default function About() {
   return (
     <section className="bg-[#f6f9fa] py-14 md:py-20">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:gap-14 px-4 md:px-6 md:grid-cols-2 md:items-start">
-        
         {/* LEFT – IMAGE */}
         <div className="relative h-[320px] md:h-[520px] w-full overflow-hidden rounded-xl">
           <Image
@@ -27,27 +26,28 @@ export default function About() {
           </span>
 
           <h2 className="mt-4 mb-4 text-2xl md:text-4xl font-bold leading-snug text-gray-900">
-            We’re More than an Industrial Company
+            Leading Integrated Steel Manufacturer in Central India
           </h2>
 
           <p className="text-sm md:text-base leading-relaxed text-gray-600 mb-4">
-            Vaswani Group of Industries, one of the most reputed group of
-            Chhattisgarh has been able to grow and create a mark in Central
-            India&apos;s largest manufacturing unit. Over the last two decades
-            the company has continuously diversified its product portfolio to
-            include many customized value added products.
+            Vaswani Industries Limited is a publicly listed integrated steel
+            manufacturing company headquartered in Central India. The company
+            operates across the steel value chain including sponge iron
+            manufacturing, steel billet production, rolling mill products,
+            forgings, casting, and captive power generation.
           </p>
 
           <p className="text-sm md:text-base leading-relaxed text-gray-600">
-            With vibrant and dedicated employees forming the core of our Group,
-            we have grown from strength to strength under the dynamic leadership
-            of our promoters and directors.
+            With modern induction furnace operations, energy-efficient
+            manufacturing systems, and solar energy integration, Vaswani
+            Industries supports infrastructure, engineering, and industrial
+            sectors across India.
           </p>
 
           {/* CTA */}
           <div className="mt-6">
             <button className="group flex items-center gap-3 rounded-full bg-[#43bfb1] px-1 pl-4 py-1 text-sm md:text-base font-medium text-white transition hover:bg-[#308a7f]">
-              Know More
+              About Vaswani Industries
               <span className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-full bg-white text-black transition group-hover:translate-x-1">
                 →
               </span>

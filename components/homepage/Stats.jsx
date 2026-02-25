@@ -2,24 +2,24 @@ import { Globe } from "lucide-react";
 
 const stats = [
   {
-    value: "90000",
+    value: "90,000",
     unit: "MT",
-    label: "Production and Capacity of Sponge Iron",
+    label: "Sponge Iron Manufacturing Capacity",
   },
   {
-    value: "105000",
+    value: "105,000",
     unit: "MT",
-    label: "Production and Capacity of Billets",
+    label: "Steel Billets Production Capacity",
   },
   {
     value: "11.5",
     unit: "MW",
-    label: "Production and Capacity of Power",
+    label: "Captive Thermal Power Plant",
   },
   {
     value: "16.25",
     unit: "MW",
-    label: "Production and Capacity of Solar",
+    label: "Solar Energy Generation",
   },
 ];
 
