@@ -5,143 +5,87 @@ import { Linkedin, Twitter, Facebook } from "lucide-react";
 
 export default function Director() {
   const teamMembers = [
-    {
-      id: 1,
-      name: "Mr. Yashwant Vaswani",
-      role: "Whole Time Director",
-      image: director,
-      linkedin: "#",
-      twitter: "#",
-      facebook: "#",
-    },
-    {
-      id: 2,
-      name: "Mr. Satya Narayan Gupta",
-      role: "Non-Executive Director",
-      image: director,
-      linkedin: "#",
-      twitter: "#",
-      facebook: "#",
-    },
-    {
-      id: 3,
-      name: "Mr. Rituraj Peswani",
-      role: "Independent Director",
-      image: director,
-      linkedin: "#",
-      twitter: "#",
-      facebook: "#",
-    },
-    {
-      id: 4,
-      name: "Ms. Supriya Goyal",
-      role: "Additional Woman Director",
-      image: director,
-      linkedin: "#",
-      twitter: "#",
-      facebook: "#",
-    },
-    {
-      id: 5,
-      name: "Mr. Chittaranjan Parida",
-      role: "Non-Executive, Independent Director",
-      image: director,
-      linkedin: "#",
-      twitter: "#",
-      facebook: "#",
-    },
-    {
-      id: 6,
-      name: "Mr. Pawan Kumar Jha",
-      role: "Executive Director",
-      image: director,
-      linkedin: "#",
-      twitter: "#",
-      facebook: "#",
-    },
+    { id: 1, name: "Mr. Yashwant Vaswani", role: "Whole Time Director", image: director, linkedin: "#", twitter: "#", facebook: "#" },
+    { id: 2, name: "Mr. Satya Narayan Gupta", role: "Non-Executive Director", image: director, linkedin: "#", twitter: "#", facebook: "#" },
+    { id: 3, name: "Mr. Rituraj Peswani", role: "Independent Director", image: director, linkedin: "#", twitter: "#", facebook: "#" },
+    { id: 4, name: "Ms. Supriya Goyal", role: "Additional Woman Director", image: director, linkedin: "#", twitter: "#", facebook: "#" },
+    { id: 5, name: "Mr. Chittaranjan Parida", role: "Non-Executive, Independent Director", image: director, linkedin: "#", twitter: "#", facebook: "#" },
+    { id: 6, name: "Mr. Pawan Kumar Jha", role: "Executive Director", image: director, linkedin: "#", twitter: "#", facebook: "#" },
   ];
 
+  const brandColor = "#43bfb1";
+
   return (
-    <div className="flex justify-center items-center py-12 px-4">
-      <div className="max-w-7xl w-full">
-        {/* Title & Subtitle */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+    <section className="bg-gray-50 py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
             Meet Our Directors
           </h2>
-          <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             Our leadership team brings decades of experience and a shared vision
             for excellence and innovation.
           </p>
-          {/* Decorative underline */}
-          <div className="mt-4 flex justify-center">
-            <div className="w-16 h-1 bg-red-500 rounded-full"></div>
+          <div className="mt-5 flex justify-center">
+            <div 
+              className="w-20 h-1.5 rounded-full" 
+              style={{ backgroundColor: brandColor }}
+            ></div>
           </div>
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
           {teamMembers.map((item) => (
-            <div key={item.id} className="flex flex-col items-center group">
-              {/* Profile Image Container with Social Icons Overlay */}
-              <div className="relative w-32 h-36 overflow-hidden">
+            <div key={item.id} className="group flex flex-col items-center">
+              
+              {/* Image Container */}
+              <div className="relative w-full max-w-[280px] aspect-[4/5] overflow-hidden rounded-xl shadow-md transition-transform duration-500 group-hover:-translate-y-2">
                 <Image
                   src={item.image}
                   alt={item.name}
-                  width={1000}
-                  height={1000}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   priority
-                  className="object-cover w-full h-full"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
-                {/* Social Icons Overlay - shown on hover */}
-                <div className="absolute inset-0 bg-black/50 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a
-                    href={item.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-blue-400 transition-colors duration-200"
-                    aria-label="LinkedIn"
-                  >
+                {/* Social Overlay */}
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px]">
+                  <a href={item.linkedin} className="p-2 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform" style={{ color: brandColor }} aria-label="LinkedIn">
                     <Linkedin size={20} />
                   </a>
-
-                  <a
-                    href={item.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-sky-400 transition-colors duration-200"
-                    aria-label="Twitter"
-                  >
+                  <a href={item.twitter} className="p-2 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform" style={{ color: brandColor }} aria-label="Twitter">
                     <Twitter size={20} />
                   </a>
-
-                  <a
-                    href={item.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-blue-500 transition-colors duration-200"
-                    aria-label="Facebook"
-                  >
+                  <a href={item.facebook} className="p-2 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform" style={{ color: brandColor }} aria-label="Facebook">
                     <Facebook size={20} />
                   </a>
                 </div>
               </div>
 
-              {/* Text Details */}
-              <div className="text-center p-2 relative">
-                <div className="w-0 h-1 bg-red-500 absolute left-0 top-0 transition-all duration-300 group-hover:w-full"></div>
-                <h3 className="font-bold text-lg text-gray-900 leading-tight">
+              {/* Info Details */}
+              <div className="mt-6 text-center">
+                <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-[#43bfb1] transition-colors duration-300">
                   {item.name}
                 </h3>
-                <p className="text-sm text-blue-600 font-medium mt-1">
+                <p 
+                  className="text-sm font-semibold uppercase tracking-wider"
+                  style={{ color: brandColor }}
+                >
                   {item.role}
                 </p>
+                {/* Subtle bottom border that grows on hover */}
+                <div className="flex justify-center mt-3">
+                    <div className="w-0 h-0.5 transition-all duration-300 group-hover:w-12" style={{ backgroundColor: brandColor }}></div>
+                </div>
               </div>
+
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

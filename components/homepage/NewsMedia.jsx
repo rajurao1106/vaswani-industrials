@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import news1 from "@/public/homepage/img-solar-6.webp";
+import Link from "next/link";
 
 export default function NewsMedia() {
   const sliderRef = useRef(null);
@@ -76,9 +77,9 @@ export default function NewsMedia() {
               </button>
             </div>
 
-            <button className="bg-[#43bfb1] text-white py-2 px-5 rounded-full text-sm hover:bg-[#308a7f] transition">
+            <Link href="/news" className="bg-[#43bfb1] text-white py-2 px-5 rounded-full text-sm hover:bg-[#308a7f] transition">
               READ THE NEWS
-            </button>
+            </Link>
           </div>
         </div>
 

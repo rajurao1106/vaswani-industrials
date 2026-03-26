@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import { FileText } from "lucide-react";
 import Link from "next/link"; // Next.js ke liye Link import kiya
 
-const Spongeiron = () => {
-  const [activeTab, setActiveTab] = useState("sponge");
+const Power = () => {
+  const [activeTab, setActiveTab] = useState("power");
 
   // Sidebar Menu Items with Links
   const menuItems = [
@@ -143,20 +143,31 @@ const Spongeiron = () => {
 
         {/* CONTENT AREA */}
         <div className="w-full md:w-3/4">
-          {/* Section: POWER */}
-          {activeTab === "sponge" && (
+          {/* Section: SPONGE IRON */}
+          {activeTab === "power" && (
             <div className="animate-in fade-in duration-500">
               <span className="bg-[#43bfb1] text-white text-sm font-bold px-3 py-1 uppercase">
-                Power
+                Sponge Iron
               </span>
               <h1 className="text-2xl font-bold mt-6 mb-4 text-gray-800">
-                M/s Vaswani Industries Limited has installed an 11.5 MW capacity
-                power plant.
+                Sponge iron is also known as Direct Reduced Iron (DRI)...
               </h1>
-              <p className="text-gray-600 leading-relaxed">
-                We utilize flue gas, and form steam from our 03 Waste heat
-                recovery boilers (WHRB)...
+              <p className="mb-6 text-gray-600 leading-relaxed">
+                Sponge iron making is a process in which iron ore lumps
+                (5mm-18mm size) are tumbled...
               </p>
+              <div className="bg-gray-50 p-6 border-l-4 border-[#43bfb1]">
+                <h4 className="font-bold mb-3 uppercase text-xs tracking-widest text-gray-500">
+                  Basic Reduction Reactions
+                </h4>
+                <code className="block text-gray-800 space-y-1 font-mono text-sm">
+                  C + O2 = CO2 <br />
+                  CO2 + C = 2CO <br />
+                  3Fe2O3 + CO = 2Fe3O4 + CO2 <br />
+                  Fe3O4 + CO = 3FeO + CO2 <br />
+                  FeO + CO = Fe + CO2
+                </code>
+              </div>
             </div>
           )}
         </div>
@@ -165,4 +176,4 @@ const Spongeiron = () => {
   );
 };
 
-export default Spongeiron;
+export default Power;

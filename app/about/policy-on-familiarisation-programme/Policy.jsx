@@ -4,7 +4,7 @@ const FamiliarisationPolicy = () => {
   return (
    <div className="flex justify-center items-center">
     <div className="max-w-7xl w-full">
-     <div className="bg-gray-50 min-h-screen py-10 px-4 sm:px-6 lg:px-8 font-sans text-gray-800">
+     <div className=" min-h-screen py-10 px-4 sm:px-6 lg:px-8 font-sans text-gray-800">
       <div className="max-w-4xl mx-auto bg-white shadow-md p-8 rounded-sm">
         
         {/* Main Title Badge */}

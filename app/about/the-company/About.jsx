@@ -6,30 +6,31 @@ import Button1 from "@/components/buttons/Button1";
 
 const AboutSection = () => {
   return (
-    <section className="max-w-7xl mx-auto p-8 py-20 font-sans text-gray-700">
-      <div className="grid grid-cols-2 gap-10">
-        {/* Left Column: Image and Badges */}
-        <div className=" w-full">
+    <section className="max-w-7xl mx-auto px-6 py-12 md:p-8 md:py-20 font-sans text-gray-700">
+      {/* Changed grid-cols-1 to grid-cols-2 at md breakpoint */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        
+        {/* Left Column: Image */}
+        <div className="w-full">
           <div className="rounded-sm overflow-hidden shadow-sm">
             <Image
               src={Web_slider_factory1}
               alt="Factory Aerial View"
               className="w-full h-auto object-cover"
+              priority // Recommended for "Above the fold" images
             />
           </div>
         </div>
 
         {/* Right Column: Content */}
         <div className="w-full">
-          {/* <h2 className="text-2xl font-semibold text-[#43bfb1] mb-6">
-            Who We Are ?
-          </h2> */}
-
-          <div className="space-y-6 text-[15px] leading-relaxed mb-4">
-            <p className="text-4xl font-bold text-gray-900 leading-snug mb-4">
+          <div className="space-y-6 text-[15px] leading-relaxed">
+            {/* Adjusted font size for mobile (text-3xl) vs desktop (md:text-4xl) */}
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight md:leading-snug">
               Vaswani Group of Industries is one of the reputed group of
               Chhattisgarh.
-            </p>
+            </h1>
+            
             <p className="mb-2">
               Over the last two decades the company has continuously diversified
               its product portfolio to include many customized value added
@@ -52,7 +53,10 @@ const AboutSection = () => {
               has propelled our Group into the league of formidable steel
               players in Chhattisgarh.
             </p>
-            <Button1/>
+            
+            <div className="pt-4">
+              <Button1 />
+            </div>
           </div>
         </div>
       </div>

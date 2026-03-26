@@ -1,4 +1,13 @@
 import React from 'react';
+import { 
+  Calendar, 
+  User, 
+  MessageCircle, 
+  Search, 
+  ChevronRight, 
+  ChevronsRight, 
+  Plus 
+} from 'lucide-react';
 
 // --- Mock Data ---
 const posts = [
@@ -49,7 +58,7 @@ const posts = [
 const SidebarSection = ({ title, children }) => (
   <div className="bg-white p-6 shadow-sm border border-gray-100 mb-8">
     <div className="flex items-center mb-6">
-      <div className="w-1 h-6 bg-orange-600 mr-3"></div>
+      <div className="w-1 h-6 bg-[#43bfb1] mr-3"></div>
       <h4 className="font-bold text-slate-900 uppercase tracking-wider text-sm">{title}</h4>
     </div>
     {children}
@@ -64,19 +73,25 @@ const BlogCard = ({ post }) => (
         alt={post.title}
         className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
       />
-      <div className="absolute bottom-0 left-0 bg-orange-600 text-white text-[10px] font-bold px-4 py-2 uppercase tracking-widest">
+      <div className="absolute bottom-0 left-0 bg-[#43bfb1] text-white text-[10px] font-bold px-4 py-2 uppercase tracking-widest">
         {post.category}
       </div>
     </div>
 
     <div className="p-6 flex flex-col flex-grow">
       <div className="flex flex-wrap items-center gap-4 text-gray-400 text-[11px] mb-4 font-medium uppercase tracking-tighter">
-        <span className="flex items-center gap-1"><span className="text-orange-600 text-sm">📅</span> {post.date}</span>
-        <span className="flex items-center gap-1"><span className="text-orange-600 text-sm">👤</span> {post.views} Views</span>
-        <span className="flex items-center gap-1"><span className="text-orange-600 text-sm">💬</span> {post.comments} Comments</span>
+        <span className="flex items-center gap-1.5">
+          <Calendar size={14} className="text-[#43bfb1]" /> {post.date}
+        </span>
+        <span className="flex items-center gap-1.5">
+          <User size={14} className="text-[#43bfb1]" /> {post.views} Views
+        </span>
+        <span className="flex items-center gap-1.5">
+          <MessageCircle size={14} className="text-[#43bfb1]" /> {post.comments} Comments
+        </span>
       </div>
 
-      <h3 className="text-xl font-extrabold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors leading-tight">
+      <h3 className="text-xl font-extrabold text-slate-900 mb-3 group-hover:text-[#43bfb1] transition-colors leading-tight">
         {post.title}
       </h3>
       
@@ -85,8 +100,8 @@ const BlogCard = ({ post }) => (
       </p>
 
       <div className="mt-auto">
-        <button className="bg-[#0a0d26] text-white px-6 py-3 text-[11px] font-black flex items-center gap-2 hover:bg-orange-600 transition-colors uppercase tracking-widest">
-          Read More <span className="text-lg">+</span>
+        <button className="bg-[#0a0d26] text-white px-6 py-3 text-[11px] font-black flex items-center gap-2 hover:bg-[#43bfb1] transition-colors uppercase tracking-widest">
+          Read More <Plus size={16} />
         </button>
       </div>
     </div>
@@ -98,9 +113,8 @@ const BlogCard = ({ post }) => (
 export default function Blog() {
   return (
     <div className="bg-[#f9f9f9] min-h-screen pt-[5rem] font-sans">
-      {/* Container */}
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 ">
-        <div className="flex gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           
           {/* Left Column: Blog Grid */}
           <main className="lg:col-span-8">
@@ -112,10 +126,12 @@ export default function Blog() {
             
             {/* Pagination */}
             <div className="flex items-center gap-2 mt-12">
-              <button className="w-12 h-12 bg-orange-600 text-white font-bold flex items-center justify-center">1</button>
-              <button className="w-12 h-12 bg-white border border-gray-200 text-slate-900 font-bold hover:bg-orange-600 hover:text-white transition-colors flex items-center justify-center">2</button>
-              <button className="w-12 h-12 bg-white border border-gray-200 text-slate-900 font-bold hover:bg-orange-600 hover:text-white transition-colors flex items-center justify-center">3</button>
-              <button className="w-12 h-12 bg-white border border-gray-200 text-slate-900 font-bold hover:bg-orange-600 hover:text-white transition-colors flex items-center justify-center">»</button>
+              <button className="w-12 h-12 bg-[#43bfb1] text-white font-bold flex items-center justify-center shadow-md">1</button>
+              <button className="w-12 h-12 bg-white border border-gray-200 text-slate-900 font-bold hover:bg-[#43bfb1] hover:text-white transition-colors flex items-center justify-center">2</button>
+              <button className="w-12 h-12 bg-white border border-gray-200 text-slate-900 font-bold hover:bg-[#43bfb1] hover:text-white transition-colors flex items-center justify-center">3</button>
+              <button className="w-12 h-12 bg-white border border-gray-200 text-slate-900 font-bold hover:bg-[#43bfb1] hover:text-white transition-colors flex items-center justify-center">
+                <ChevronsRight size={18} />
+              </button>
             </div>
           </main>
 
@@ -123,25 +139,25 @@ export default function Blog() {
           <aside className="lg:col-span-4">
             
             {/* Search Widget */}
-            <div className="bg-white p-2 shadow-sm border border-gray-100 mb-8 flex">
+            <div className="bg-white p-2 shadow-sm border border-gray-100 mb-8 flex items-center">
               <input 
                 type="text" 
                 placeholder="Search Here..." 
                 className="w-full p-4 outline-none text-sm text-gray-600 italic" 
               />
-              <button className="bg-white px-4 text-gray-400 hover:text-orange-600 transition-colors">
-                🔍
+              <button className="bg-white px-4 text-gray-400 hover:text-[#43bfb1] transition-colors">
+                <Search size={20} />
               </button>
             </div>
 
             <SidebarSection title="Categories">
               <ul className="space-y-4">
                 {['Industry', 'Themeforest', 'Graphicriver', 'Building'].map((cat) => (
-                  <li key={cat} className="flex justify-between items-center text-sm font-bold text-slate-700 hover:text-orange-600 cursor-pointer group transition-colors">
+                  <li key={cat} className="flex justify-between items-center text-sm font-bold text-slate-700 hover:text-[#43bfb1] cursor-pointer group transition-colors">
                     <span className="flex items-center gap-2">
-                       <span className="text-[10px] text-gray-300 group-hover:text-orange-600">▶</span> {cat}
+                       <ChevronRight size={12} className="text-gray-300 group-hover:text-[#43bfb1]" /> {cat}
                     </span>
-                    <span className="bg-gray-50 px-2 py-1 text-[10px] text-gray-400 border group-hover:bg-orange-600 group-hover:text-white transition-all">2</span>
+                    <span className="bg-gray-50 px-2 py-1 text-[10px] text-gray-400 border group-hover:bg-[#43bfb1] group-hover:text-white transition-all">2</span>
                   </li>
                 ))}
               </ul>
@@ -150,9 +166,9 @@ export default function Blog() {
             <SidebarSection title="Archives">
               <ul className="space-y-4">
                 {['November 2019', 'February 2020', 'September 2019'].map((date) => (
-                  <li key={date} className="flex justify-between items-center text-sm font-bold text-slate-700 hover:text-orange-600 cursor-pointer group">
+                  <li key={date} className="flex justify-between items-center text-sm font-bold text-slate-700 hover:text-[#43bfb1] cursor-pointer group">
                     <span className="flex items-center gap-2 font-bold uppercase tracking-tight">
-                       <span className="text-[10px] text-gray-300">▶</span> {date}
+                       <ChevronRight size={12} className="text-gray-300 group-hover:text-[#43bfb1]" /> {date}
                     </span>
                     <span className="text-gray-400 text-xs">(1)</span>
                   </li>
@@ -163,7 +179,7 @@ export default function Blog() {
             <SidebarSection title="Tags">
               <div className="flex flex-wrap gap-2">
                 {['Maps', 'Cloud', 'Builder', 'Tower', 'Truck', 'Safety', 'Design'].map(tag => (
-                  <span key={tag} className="bg-black text-white px-4 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-orange-600 cursor-pointer transition-colors">
+                  <span key={tag} className="bg-[#0a0d26] text-white px-4 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-[#43bfb1] cursor-pointer transition-colors">
                     {tag}
                   </span>
                 ))}

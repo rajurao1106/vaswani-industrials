@@ -4,11 +4,13 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import breadcrumbs from "@/public/breadcrumbs/breadcrumbs.jpg"
 import ApproachSection from "../our-vision-&-mission/VisionandMission";
 import Quote from "@/layout/Quote";
+import Stats from "@/components/homepage/Stats";
+import NewsMedia from "@/components/homepage/NewsMedia";
 
 export default function page() {
   const breadcrumbLinks = [
     { label: "Home", url: "/" },
-    { label: "About Venus", url: "/about" },
+    { label: "About", url: "/about" },
     { label: "Company", url: "/about/company" },
   ];
   return (
@@ -17,6 +19,8 @@ export default function page() {
       <About />
       <ApproachSection/>
       <Quote/>
+      <Stats/>
+      <NewsMedia/>
     </div>
   );
 }

@@ -1,21 +1,21 @@
 import React from "react";
-import Blog from "./Blog";
-import breadcrumbs from "@/public/breadcrumbs/breadcrumbs.jpg";
+import Power from "./Power";
 import Breadcrumbs from "@/components/Breadcrumbs";
-
+import breadcrumbs from "@/public/breadcrumbs/breadcrumbs.jpg";
 export default function page() {
   const breadcrumbLinks = [
     { label: "Home", url: "/" },
-    { label: "News And Media", url: "/about/company" },
+    { label: "Power", url: "/about/company" },
   ];
   return (
-    <div className="pt-[5rem]">
+    <div className="pt-[6rem]">
+      {" "}
       <Breadcrumbs
-        title="News And Media"
+        title="Products"
         links={breadcrumbLinks}
         image={breadcrumbs}
       />
-      <Blog />
+      <Power />
     </div>
   );
 }

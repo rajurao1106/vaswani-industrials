@@ -1,21 +1,27 @@
-import React from 'react'
-import Policy from './Policy'
-import Breadcrumbs from '@/components/Breadcrumbs'
+import React from "react";
+import Policy from "./Policy";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import breadcrumbs from "@/public/breadcrumbs/breadcrumbs.jpg";
-
+import ApproachSection from "../our-vision-&-mission/VisionandMission";
+import Quote from "@/layout/Quote";
+import Stats from "@/components/homepage/Stats";
+import NewsMedia from "@/components/homepage/NewsMedia";
 export default function page() {
   const breadcrumbLinks = [
     { label: "Home", url: "/" },
-    { label: "Disclosures", url: "/about/company" },
+    { label: "Policy On Familiarisation Programme", url: "/about/company" },
   ];
   return (
     <div>
-       <Breadcrumbs
-        title="Investors"
+      <Breadcrumbs
+        title="About Us"
         links={breadcrumbLinks}
         image={breadcrumbs}
       />
-      <Policy/>
+      <Policy />
+      <Quote />
+      <Stats />
+      <NewsMedia />
     </div>
-  )
+  );
 }
