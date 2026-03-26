@@ -147,27 +147,18 @@ const Power = () => {
           {activeTab === "power" && (
             <div className="animate-in fade-in duration-500">
               <span className="bg-[#43bfb1] text-white text-sm font-bold px-3 py-1 uppercase">
-                Sponge Iron
+                POWER
               </span>
               <h1 className="text-2xl font-bold mt-6 mb-4 text-gray-800">
-                Sponge iron is also known as Direct Reduced Iron (DRI)...
+                M/s Vaswani Industries Limited has installed an 11.5 MW capacity
+                power plant in addition to the Sponge Iron and Steel Division.
               </h1>
               <p className="mb-6 text-gray-600 leading-relaxed">
-                Sponge iron making is a process in which iron ore lumps
-                (5mm-18mm size) are tumbled...
+                We utilize flue gas, and form steam from our 03 Waste heat recovery boilers (WHRB), in the form of renewable energy from 100 TPD sponge iron kilns. We have also installed an AFBC boiler in which a maximum amount of dolochar (By Product of DRI production) is used as fuel. The Electricity Generated in the captive power plant is used by the steel Melting shop (SMS). This process of utilizing waste heat to generate into electricity is extremely beneficial for the environment.
+
+
               </p>
-              <div className="bg-gray-50 p-6 border-l-4 border-[#43bfb1]">
-                <h4 className="font-bold mb-3 uppercase text-xs tracking-widest text-gray-500">
-                  Basic Reduction Reactions
-                </h4>
-                <code className="block text-gray-800 space-y-1 font-mono text-sm">
-                  C + O2 = CO2 <br />
-                  CO2 + C = 2CO <br />
-                  3Fe2O3 + CO = 2Fe3O4 + CO2 <br />
-                  Fe3O4 + CO = 3FeO + CO2 <br />
-                  FeO + CO = Fe + CO2
-                </code>
-              </div>
+             
             </div>
           )}
         </div>

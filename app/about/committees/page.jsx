@@ -12,7 +12,7 @@ export default function page() {
     { label: "Board Committees", url: "/about/company" },
   ];
   return (
-    <div className="pt-[8rem]">
+    <div className="pt-[6rem]">
       <Breadcrumbs
         title="About Us"
         links={breadcrumbLinks}

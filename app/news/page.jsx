@@ -9,7 +9,7 @@ export default function page() {
     { label: "News And Media", url: "/about/company" },
   ];
   return (
-    <div className="pt-[5rem]">
+    <div className="pt-[6rem]">
       <Breadcrumbs
         title="News And Media"
         links={breadcrumbLinks}

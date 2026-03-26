@@ -12,7 +12,7 @@ export default function page() {
     { label: "Chairmans Message", url: "/about/company" },
   ];
   return (
-    <div className="pt-[5rem]">
+    <div className="pt-[6rem]">
       <Breadcrumbs
         title="About Us"
         links={breadcrumbLinks}

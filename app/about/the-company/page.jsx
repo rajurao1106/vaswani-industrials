@@ -14,7 +14,7 @@ export default function page() {
     { label: "Company", url: "/about/company" },
   ];
   return (
-    <div className="pt-[5rem]">
+    <div className="pt-[6rem]">
       <Breadcrumbs title="Company" links={breadcrumbLinks} image={breadcrumbs} />
       <About />
       <ApproachSection/>

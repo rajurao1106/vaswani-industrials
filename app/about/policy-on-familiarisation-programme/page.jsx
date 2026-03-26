@@ -12,7 +12,7 @@ export default function page() {
     { label: "Policy On Familiarisation Programme", url: "/about/company" },
   ];
   return (
-    <div>
+    <div className="pt-[6rem]">
       <Breadcrumbs
         title="About Us"
         links={breadcrumbLinks}
