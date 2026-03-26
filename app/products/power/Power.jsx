@@ -154,11 +154,15 @@ const Power = () => {
                 power plant in addition to the Sponge Iron and Steel Division.
               </h1>
               <p className="mb-6 text-gray-600 leading-relaxed">
-                We utilize flue gas, and form steam from our 03 Waste heat recovery boilers (WHRB), in the form of renewable energy from 100 TPD sponge iron kilns. We have also installed an AFBC boiler in which a maximum amount of dolochar (By Product of DRI production) is used as fuel. The Electricity Generated in the captive power plant is used by the steel Melting shop (SMS). This process of utilizing waste heat to generate into electricity is extremely beneficial for the environment.
-
-
+                We utilize flue gas, and form steam from our 03 Waste heat
+                recovery boilers (WHRB), in the form of renewable energy from
+                100 TPD sponge iron kilns. We have also installed an AFBC boiler
+                in which a maximum amount of dolochar (By Product of DRI
+                production) is used as fuel. The Electricity Generated in the
+                captive power plant is used by the steel Melting shop (SMS).
+                This process of utilizing waste heat to generate into
+                electricity is extremely beneficial for the environment.
               </p>
-             
             </div>
           )}
         </div>

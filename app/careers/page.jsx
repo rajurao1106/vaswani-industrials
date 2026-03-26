@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function CareersPage() {
   return (
-    <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
+    <div className="min-h-screen pt-[6rem] bg-gray-50 font-sans text-gray-900">
       {/* Header Section */}
       <section className="py-16 px-4 text-center">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
