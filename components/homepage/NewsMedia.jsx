@@ -1,13 +1,31 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import news1 from "@/public/homepage/img-solar-6.webp";
 import Link from "next/link";
+import news1 from "@/public/homepage/img-solar-6.webp"; // Fallback image
+import api from "@/lib/api";
 
 export default function NewsMedia() {
   const sliderRef = useRef(null);
+  const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+         const res = await api.get("/api/posts");
+        setNews(res.data);
+      } catch (error) {
+        console.error("Error fetching news:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
 
   const slide = (direction) => {
     if (!sliderRef.current) return;
@@ -18,42 +36,19 @@ export default function NewsMedia() {
     });
   };
 
-  const news = [
-    {
-      category: "Virtual Event",
-      title: "Reimagining Mary Oliver’s Best Virtual Court",
-      date: "Feb 18, 2025",
-      image: news1,
-    },
-    {
-      category: "Industry",
-      title: "Tracking the Changes of Retail Industry",
-      date: "Feb 05, 2025",
-      image: news1,
-    },
-    {
-      category: "Platform",
-      title: "Easy and Most Powerful Server and Platform",
-      date: "Nov 08, 2024",
-      image: news1,
-    },
-    {
-      category: "Notice",
-      title: "Notice of 19th Annual General Meeting",
-      date: "Nov 07, 2024",
-      image: news1,
-    },
-  ];
+  if (loading) {
+    return <div className="py-20 text-center">Loading news...</div>;
+  }
 
   return (
     <section className="py-14 md:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-
+        
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8 md:mb-10">
           <div>
-            <h2 className="text-2xl md:text-4xl font-bold mb-2">
-              NEWS | MEDIA | EVENTS | CSR
+            <h2 className="text-2xl md:text-4xl font-bold mb-2 uppercase">
+              News | Media | Events | CSR
             </h2>
             <p className="text-gray-400 text-sm md:text-base">
               It&apos;s always about the society we serve!
@@ -88,34 +83,44 @@ export default function NewsMedia() {
           ref={sliderRef}
           className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide pb-4"
         >
-          {news.map((item, index) => (
+          {news.map((item) => (
             <div
-              key={index}
-              className="min-w-[280px] sm:min-w-[320px] md:min-w-[350px] bg-white shadow-lg rounded-xl overflow-hidden"
+              key={item._id}
+              className="min-w-[280px] sm:min-w-[320px] md:min-w-[350px] bg-white shadow-lg rounded-xl overflow-hidden flex flex-col"
             >
               {/* Image */}
-              <div className="relative h-40 md:h-44">
+              <div className="relative h-40 md:h-44 bg-gray-100">
                 <Image
-                  src={item.image}
+                  src={item.coverImage && item.coverImage.startsWith('http') ? item.coverImage : news1}
                   alt={item.title}
                   fill
                   className="object-cover"
+                  unoptimized={true} // Use this if coverImage is an external URL not configured in next.config.js
                 />
               </div>
 
               {/* Content */}
-              <div className="p-5 md:p-6">
+              <div className="p-5 md:p-6 flex-grow flex flex-col">
                 <p className="text-xs text-gray-400 mb-2">
-                  {item.category} • {item.date}
+                  <span className="font-semibold text-[#43bfb1] uppercase">{item.type}</span> • {new Date(item.createdAt).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                  })}
                 </p>
 
-                <p className="text-sm md:text-base text-gray-700 mb-4 leading-relaxed">
+                <h3 className="text-sm md:text-base font-medium text-gray-700 mb-4 leading-relaxed line-clamp-2">
                   {item.title}
-                </p>
+                </h3>
 
-                <button className="text-xs font-semibold text-[#43bfb1] hover:text-[#2f9085]">
-                  READ MORE →
-                </button>
+                <div className="mt-auto">
+                  <Link 
+                    href={`/news/${item.slug}`} 
+                    className="text-xs font-semibold text-[#43bfb1] hover:text-[#2f9085] flex items-center gap-1"
+                  >
+                    READ MORE →
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
@@ -123,9 +128,9 @@ export default function NewsMedia() {
 
         {/* Mobile CTA */}
         <div className="mt-6 flex justify-center md:hidden">
-          <button className="bg-[#43bfb1] text-white py-2 px-6 rounded-full text-sm">
+          <Link href="/news" className="bg-[#43bfb1] text-white py-2 px-6 rounded-full text-sm">
             READ THE NEWS
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -30,14 +30,7 @@ const AboutSection = () => {
               Vaswani Group of Industries is one of the reputed group of
               Chhattisgarh.
             </h1>
-            
-            <p className="mb-2">
-              Over the last two decades the company has continuously diversified
-              its product portfolio to include many customized value added
-              products. The company firmly believes in benchmark product
-              quality, customer centric approach, people focus, ethical business
-              practices and good corporate citizenship.
-            </p>
+         
             <p className="mb-2">
               Over the last two decades the company has continuously diversified
               its product portfolio to include many customized value added

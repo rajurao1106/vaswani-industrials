@@ -10,7 +10,7 @@ export default function Footer() {
       
       {/* Top Footer */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-        
+    
         {/* About */}
         <div>
           <Image

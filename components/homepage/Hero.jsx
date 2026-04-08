@@ -1,13 +1,40 @@
+"use client";
 import Image from "next/image";
-import hero from "@/public/homepage/Web-slider-factory1.webp";
+import fallbackImage from "@/public/homepage/Web-slider-factory1.webp"; // Renamed to avoid conflict
+import { useState, useEffect } from "react";
+import api from "@/lib/api";
 
 export default function Hero() {
+  const [heroData, setHeroData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+     const res = await api.get("/api/hero-sliders/all");
+        
+        // Axios data is in res.data
+        if (res.data && res.data.length > 0) {
+          setHeroData(res.data[0]);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getData();
+  }, []);
+
+  // Show nothing or a loader until data is ready
+  if (loading || !heroData) return null;
+
   return (
-    <section className="px-3 py-3 max-lg:pt-20  md:px-6 pt-26">
+    <section className="px-3 py-3 max-lg:pt-20 md:px-6 pt-26">
       <div className="relative h-[90vh] md:h-screen w-full overflow-hidden rounded-2xl md:rounded-3xl">
         {/* Background Image */}
         <Image
-          src={hero}
+          src={heroData.backgroundImagePath.startsWith('/') ? heroData.backgroundImagePath : fallbackImage}
           alt="Industry"
           fill
           priority
@@ -20,33 +47,32 @@ export default function Hero() {
         {/* Content */}
         <div className="relative z-10 flex h-full items-center justify-center px-4 text-center">
           <div className="max-w-xl md:max-w-4xl text-white">
-            {/* Small label */}
+            {/* Heading from JSON */}
             <span className="mx-auto mb-3 inline-block rounded-full border border-white/30 px-3 py-1 text-[10px] md:text-xs tracking-wide backdrop-blur">
-              Industrial Strength. Sustainable Energy.
+              {heroData.heading}
             </span>
 
-            {/* Heading */}
+            {/* Subtitle from JSON */}
             <h1 className="mt-4 text-2xl leading-snug font-bold sm:text-3xl md:text-5xl mb-4">
-              Integrated Steel Manufacturer in India with Captive Power & Solar
-              Energy
+              {heroData.subtitle}
             </h1>
 
-            {/* Paragraph */}
+            {/* CTA Text / Description from JSON */}
             <p className="text-sm sm:text-base md:text-lg text-white/90">
-              Vaswani Industries Limited is a leading integrated steel
-              manufacturing company in India producing sponge iron, steel
-              billets, rolling mill products, forgings, and casting supported by
-              captive thermal power generation and solar energy infrastructure.
+              {heroData.ctaText}
             </p>
 
-            {/* Button */}
+            {/* Button using ctaLink from JSON */}
             <div className="mt-6 md:mt-8 flex justify-center">
-              <button className="group flex items-center gap-3 rounded-full bg-[#43bfb1] px-1 pl-4 py-1 text-sm md:text-base font-medium transition hover:bg-[#308a7f]">
+              <a 
+                href={heroData.ctaLink || "#"}
+                className="group flex items-center gap-3 rounded-full bg-[#43bfb1] px-1 pl-4 py-1 text-sm md:text-base font-medium transition hover:bg-[#308a7f]"
+              >
                 Explore Our Businesses
                 <span className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-full bg-white text-black transition group-hover:translate-x-1">
                   →
                 </span>
-              </button>
+              </a>
             </div>
           </div>
         </div>

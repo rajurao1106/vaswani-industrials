@@ -29,7 +29,6 @@ export default function Page() {
       <Hero />
       <Stats />
       <About />
-      {/* <WordFromCeo /> */}
       <OurProducts />
       <NewsMedia />
       <CTA />
