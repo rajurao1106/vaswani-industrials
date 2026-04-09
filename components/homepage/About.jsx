@@ -35,7 +35,7 @@ export default function About() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:gap-14 px-4 md:px-6 md:grid-cols-2 md:items-start">
         <div className="relative h-[320px] md:h-[520px] w-full overflow-hidden rounded-xl">
           <Image
-            src={data.sectionImage && data.sectionImage.startsWith("/") ? data.sectionImage : fallbackImage}
+            src={fallbackImage}
             alt={data.heading || "About Us"}
             fill
             priority

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from "react";
 import { Play } from "lucide-react";
@@ -6,13 +6,12 @@ import Image from "next/image";
 import Button1 from "@/components/buttons/Button1";
 
 const AboutSection = () => {
-  // 1. Initialize state as null or an empty object
   const [about, setAbout] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const getAbout = async () => {
     try {
-      const res = await fetch("https://vil-cms-dhct.vercel.app/api/company/The Company");
+      const res = await fetch("http://localhost:1337/api/company/The Company");
       const data = await res.json();
       setAbout(data);
     } catch (error) {
@@ -22,10 +21,20 @@ const AboutSection = () => {
     }
   };
 
-  // 2. Trigger the fetch on component mount
   useEffect(() => {
     getAbout();
   }, []);
+
+  // --- CLEANING FUNCTION ---
+  // Yeh function HTML tags se styles aur gande characters remove karta hai
+  const cleanContent = (html) => {
+    if (!html) return "";
+    return html
+      .replace(/&nbsp;/g, " ") // Extra spaces ko normal space mein badalta hai
+      .replace(/style="[^"]*"/gi, "") // Saare inline styles (background, color) remove karta hai
+      .replace(/<span[^>]*>/gi, "") // Faltu span tags remove karta hai (optional)
+      .replace(/<\/span>/gi, "");
+  };
 
   if (loading) return <div className="py-20 text-center">Loading...</div>;
   if (!about) return null;
@@ -53,10 +62,12 @@ const AboutSection = () => {
               {about.subtitle}
             </h1>
          
-            {/* Dynamic Main Content (renders the HTML from API) */}
+            {/* Cleaned HTML: Ab yahan background-color aur hardcoded 
+               colors frontend ko kharab nahi karenge.
+            */}
             <div 
-              className="prose prose-slate max-w-none"
-              dangerouslySetInnerHTML={{ __html: about.mainContent }} 
+              className="prose prose-slate max-w-none text-gray-600"
+              dangerouslySetInnerHTML={{ __html: cleanContent(about.mainContent) }} 
             />
             
             <div className="pt-4">
