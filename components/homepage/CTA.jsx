@@ -8,19 +8,7 @@ export default function ContactCTA() {
   return (
     <section className="relative bg-gray-100 overflow-hidden">
       
-      {/* Optional Background Image */}
-      {/* 
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src={bgImg}
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/70" />
-      </div>
-      */}
+     
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-14">
         

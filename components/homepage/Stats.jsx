@@ -1,6 +1,5 @@
-"use client"
+"use client";
 
-import api from "@/lib/api";
 import React, { useState, useEffect } from "react";
 
 const AnimatedCounter = ({ target, duration = 2000 }) => {
@@ -22,8 +21,8 @@ const AnimatedCounter = ({ target, duration = 2000 }) => {
   }, [target, duration]);
 
   const isDecimal = target % 1 !== 0;
-  const displayValue = isDecimal 
-    ? count.toFixed(2).replace(/\.?0+$/, "") 
+  const displayValue = isDecimal
+    ? count.toFixed(2).replace(/\.?0+$/, "")
     : Math.floor(count).toLocaleString();
 
   return <span>{displayValue}</span>;
@@ -36,7 +35,11 @@ export default function Stats() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch(`${api}/api/stats`);
+        // Direct API URL used here
+        const res = await fetch("https://vil-cms-dhct.vercel.app/api/stats");
+        
+        if (!res.ok) throw new Error("Network response was not ok");
+        
         const data = await res.json();
         const sortedData = data.sort((a, b) => a.order - b.order);
         setStatsData(sortedData);
@@ -63,7 +66,6 @@ export default function Stats() {
                 className="px-4 max-lg:py-6 md:px-6 text-center md:text-left"
               >
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
-                  {/* Convert value to number just in case it's a string from API */}
                   <AnimatedCounter target={Number(item.value)} />
                   <span className="ml-1 text-base md:text-lg font-semibold text-gray-600">
                     {item.unit}

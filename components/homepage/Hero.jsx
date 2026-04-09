@@ -1,8 +1,8 @@
 "use client";
+
 import Image from "next/image";
-import fallbackImage from "@/public/homepage/Web-slider-factory1.webp"; // Renamed to avoid conflict
+import fallbackImage from "@/public/homepage/Web-slider-factory1.webp";
 import { useState, useEffect } from "react";
-import api from "@/lib/api";
 
 export default function Hero() {
   const [heroData, setHeroData] = useState(null);
@@ -11,11 +11,18 @@ export default function Hero() {
   useEffect(() => {
     const getData = async () => {
       try {
-     const res = await api.get("/api/hero-sliders/all");
+        // Replaced axios with native fetch
+        // Ensure the URL matches your backend environment variable or base path
+        const res = await fetch(`https://vil-cms-dhct.vercel.app/api/hero-sliders/all`);
         
-        // Axios data is in res.data
-        if (res.data && res.data.length > 0) {
-          setHeroData(res.data[0]);
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const data = await res.json();
+
+        if (data && data.length > 0) {
+          setHeroData(data[0]);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -34,7 +41,7 @@ export default function Hero() {
       <div className="relative h-[90vh] md:h-screen w-full overflow-hidden rounded-2xl md:rounded-3xl">
         {/* Background Image */}
         <Image
-          src={heroData.backgroundImagePath.startsWith('/') ? heroData.backgroundImagePath : fallbackImage}
+          src={heroData.backgroundImagePath?.startsWith('/') ? heroData.backgroundImagePath : fallbackImage}
           alt="Industry"
           fill
           priority
