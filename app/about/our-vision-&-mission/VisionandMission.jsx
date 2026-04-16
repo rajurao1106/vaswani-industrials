@@ -23,7 +23,7 @@ export default function ApproachSection() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:1337/api/vision-mission");
+        const response = await fetch("https://vil-cms-dhct.vercel.app/api/vision-mission");
         const data = await response.json();
         setApiData(data);
       } catch (error) {

@@ -11,7 +11,7 @@ const AboutSection = () => {
 
   const getAbout = async () => {
     try {
-      const res = await fetch("http://localhost:1337/api/company/The Company");
+      const res = await fetch("https://vil-cms-dhct.vercel.app/api/company/The Company");
       const data = await res.json();
       setAbout(data);
     } catch (error) {

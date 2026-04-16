@@ -19,11 +19,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'cdn3.iconfinder.com',
+        hostname: 'ui-avatars.com',
       },
       {
         protocol: 'https',
-        hostname: 'cdn4.iconfinder.com',
+        hostname: 'www.vaswaniindustries.com',
       },
       
     ],
