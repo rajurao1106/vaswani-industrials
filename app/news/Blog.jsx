@@ -1,4 +1,6 @@
-import React from 'react';
+"use client"
+
+import React, { useState, useEffect } from 'react';
 import { 
   Calendar, 
   User, 
@@ -8,50 +10,6 @@ import {
   ChevronsRight, 
   Plus 
 } from 'lucide-react';
-
-// --- Mock Data ---
-const posts = [
-  {
-    id: 1,
-    title: "What UK business brings to the table",
-    category: "Industrial",
-    date: "Oct 23, 2021",
-    views: "340",
-    comments: "5",
-    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800",
-    excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus commodo viverra maecenas accumsan lacus vel facilisis."
-  },
-  {
-    id: 2,
-    title: "Best for any Industrial & Business Solution",
-    category: "Factory",
-    date: "Nov 12, 2021",
-    views: "520",
-    comments: "12",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
-    excerpt: "Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing."
-  },
-  {
-    id: 3,
-    title: "Understand what business thinks",
-    category: "Business",
-    date: "Dec 05, 2021",
-    views: "210",
-    comments: "3",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
-    excerpt: "Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed velit."
-  },
-  {
-    id: 4,
-    title: "Financing the transition to a sustainable future",
-    category: "Finance",
-    date: "Jan 18, 2022",
-    views: "890",
-    comments: "24",
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800",
-    excerpt: "Sustainability is no longer an option but a necessity. Explore how modern financing is driving the green industrial revolution."
-  }
-];
 
 // --- Sub-Components ---
 
@@ -65,52 +23,89 @@ const SidebarSection = ({ title, children }) => (
   </div>
 );
 
-const BlogCard = ({ post }) => (
-  <div className="group bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full">
-    <div className="relative overflow-hidden aspect-video">
-      <img 
-        src={post.image} 
-        alt={post.title}
-        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-      />
-      <div className="absolute bottom-0 left-0 bg-[#43bfb1] text-white text-[10px] font-bold px-4 py-2 uppercase tracking-widest">
-        {post.category}
+const BlogCard = ({ post }) => {
+  // Format Date from ISO string
+  const formattedDate = new Date(post.createdAt).toLocaleDateString('en-US', {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric'
+  });
+
+  // Placeholder image if coverImage is just a string/title instead of a URL
+  const imageUrl = post.coverImage?.startsWith('http') 
+    ? post.coverImage 
+    : "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800";
+
+  return (
+    <div className="group bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+      <div className="relative overflow-hidden aspect-video">
+        <img 
+          src={imageUrl} 
+          alt={post.title}
+          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+        />
+        <div className="absolute bottom-0 left-0 bg-[#43bfb1] text-white text-[10px] font-bold px-4 py-2 uppercase tracking-widest">
+          {post.type}
+        </div>
+      </div>
+
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="flex flex-wrap items-center gap-4 text-gray-400 text-[11px] mb-4 font-medium uppercase tracking-tighter">
+          <span className="flex items-center gap-1.5">
+            <Calendar size={14} className="text-[#43bfb1]" /> {formattedDate}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <User size={14} className="text-[#43bfb1]" /> {post.author}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <MessageCircle size={14} className="text-[#43bfb1]" /> 0 Comments
+          </span>
+        </div>
+
+        <h3 className="text-xl font-extrabold text-slate-900 mb-3 group-hover:text-[#43bfb1] transition-colors leading-tight">
+          {post.title}
+        </h3>
+        
+        <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3">
+          {post.excerpt}
+        </p>
+
+        <div className="mt-auto">
+          <button className="bg-[#0a0d26] text-white px-6 py-3 text-[11px] font-black flex items-center gap-2 hover:bg-[#43bfb1] transition-colors uppercase tracking-widest">
+            Read More <Plus size={16} />
+          </button>
+        </div>
       </div>
     </div>
-
-    <div className="p-6 flex flex-col flex-grow">
-      <div className="flex flex-wrap items-center gap-4 text-gray-400 text-[11px] mb-4 font-medium uppercase tracking-tighter">
-        <span className="flex items-center gap-1.5">
-          <Calendar size={14} className="text-[#43bfb1]" /> {post.date}
-        </span>
-        <span className="flex items-center gap-1.5">
-          <User size={14} className="text-[#43bfb1]" /> {post.views} Views
-        </span>
-        <span className="flex items-center gap-1.5">
-          <MessageCircle size={14} className="text-[#43bfb1]" /> {post.comments} Comments
-        </span>
-      </div>
-
-      <h3 className="text-xl font-extrabold text-slate-900 mb-3 group-hover:text-[#43bfb1] transition-colors leading-tight">
-        {post.title}
-      </h3>
-      
-      <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3">
-        {post.excerpt}
-      </p>
-
-      <div className="mt-auto">
-        <button className="bg-[#0a0d26] text-white px-6 py-3 text-[11px] font-black flex items-center gap-2 hover:bg-[#43bfb1] transition-colors uppercase tracking-widest">
-          Read More <Plus size={16} />
-        </button>
-      </div>
-    </div>
-  </div>
-);
+  );
+};
 
 // --- Main Page Component ---
 
 export default function Blog() {
+  const [apiPosts, setApiPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch("https://vil-cms-dhct.vercel.app/api/posts");
+        const data = await response.json();
+        setApiPosts(data);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center font-bold text-[#43bfb1]">Loading...</div>;
+  }
+
   return (
     <div className="bg-[#f9f9f9] min-h-screen pt-[5rem] font-sans">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 ">
@@ -119,8 +114,8 @@ export default function Blog() {
           {/* Left Column: Blog Grid */}
           <main className="lg:col-span-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {posts.map((post) => (
-                <BlogCard key={post.id} post={post} />
+              {apiPosts.map((post) => (
+                <BlogCard key={post._id} post={post} />
               ))}
             </div>
             
@@ -128,7 +123,6 @@ export default function Blog() {
             <div className="flex items-center gap-2 mt-12">
               <button className="w-12 h-12 bg-[#43bfb1] text-white font-bold flex items-center justify-center shadow-md">1</button>
               <button className="w-12 h-12 bg-white border border-gray-200 text-slate-900 font-bold hover:bg-[#43bfb1] hover:text-white transition-colors flex items-center justify-center">2</button>
-              <button className="w-12 h-12 bg-white border border-gray-200 text-slate-900 font-bold hover:bg-[#43bfb1] hover:text-white transition-colors flex items-center justify-center">3</button>
               <button className="w-12 h-12 bg-white border border-gray-200 text-slate-900 font-bold hover:bg-[#43bfb1] hover:text-white transition-colors flex items-center justify-center">
                 <ChevronsRight size={18} />
               </button>
@@ -152,12 +146,14 @@ export default function Blog() {
 
             <SidebarSection title="Categories">
               <ul className="space-y-4">
-                {['Industry', 'Themeforest', 'Graphicriver', 'Building'].map((cat) => (
+                {['News', 'Blog', 'Updates', 'Industry'].map((cat) => (
                   <li key={cat} className="flex justify-between items-center text-sm font-bold text-slate-700 hover:text-[#43bfb1] cursor-pointer group transition-colors">
                     <span className="flex items-center gap-2">
                        <ChevronRight size={12} className="text-gray-300 group-hover:text-[#43bfb1]" /> {cat}
                     </span>
-                    <span className="bg-gray-50 px-2 py-1 text-[10px] text-gray-400 border group-hover:bg-[#43bfb1] group-hover:text-white transition-all">2</span>
+                    <span className="bg-gray-50 px-2 py-1 text-[10px] text-gray-400 border group-hover:bg-[#43bfb1] group-hover:text-white transition-all">
+                      {apiPosts.filter(p => p.type === cat).length}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -165,12 +161,12 @@ export default function Blog() {
 
             <SidebarSection title="Archives">
               <ul className="space-y-4">
-                {['November 2019', 'February 2020', 'September 2019'].map((date) => (
+                {['April 2026'].map((date) => (
                   <li key={date} className="flex justify-between items-center text-sm font-bold text-slate-700 hover:text-[#43bfb1] cursor-pointer group">
                     <span className="flex items-center gap-2 font-bold uppercase tracking-tight">
                        <ChevronRight size={12} className="text-gray-300 group-hover:text-[#43bfb1]" /> {date}
                     </span>
-                    <span className="text-gray-400 text-xs">(1)</span>
+                    <span className="text-gray-400 text-xs">({apiPosts.length})</span>
                   </li>
                 ))}
               </ul>
@@ -178,7 +174,8 @@ export default function Blog() {
 
             <SidebarSection title="Tags">
               <div className="flex flex-wrap gap-2">
-                {['Maps', 'Cloud', 'Builder', 'Tower', 'Truck', 'Safety', 'Design'].map(tag => (
+                {/* Dynamically extract unique tags from API data */}
+                {[...new Set(apiPosts.flatMap(p => p.tags))].map(tag => (
                   <span key={tag} className="bg-[#0a0d26] text-white px-4 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-[#43bfb1] cursor-pointer transition-colors">
                     {tag}
                   </span>
