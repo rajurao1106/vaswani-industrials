@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import fallbackImage from "@/public/homepage/Web-slider-factory1.webp";
+import fallbackImage from "@/public/newImages/Drone 4.png";
 import { useState, useEffect } from "react";
 
 export default function Hero() {

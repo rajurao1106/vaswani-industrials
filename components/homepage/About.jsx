@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import fallbackImage from "@/public/homepage/img-about-1.webp";
+import fallbackImage from "@/public/newImages/Billets Production Wide.webp";
 
 export default function About() {
   const [data, setData] = useState(null);
