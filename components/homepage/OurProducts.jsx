@@ -16,7 +16,7 @@ export default function OurProducts() {
 
   // This maps your API slugs to your local static images
   const imageMap = {
-    "premium-sponge-iron": product2,
+    "premium-sponge-iron": "https://res.cloudinary.com/drpyepp9t/image/upload/v1776426066/Billets_Production_Close_vizwrx.jpg",
     "forging-ingots": product1, 
     "power-division": product3, 
   };

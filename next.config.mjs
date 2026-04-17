@@ -9,7 +9,7 @@ const nextConfig = {
         hostname: "images.unsplash.com",
         pathname: "**",
       },
-     {
+      {
         protocol: 'https',
         hostname: 'cdn1.iconfinder.com',
       },
@@ -25,7 +25,12 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.vaswaniindustries.com',
       },
-      
+      // Add this block below
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '**',
+      },
     ],
   },
 };

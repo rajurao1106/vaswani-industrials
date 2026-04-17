@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import fallbackImage from "@/public/newImages/Billets Production Wide.webp";
+import fallbackImage from "@/public/homepage/img-about-1.webp";
 
 export default function About() {
   const [data, setData] = useState(null);
@@ -35,7 +35,7 @@ export default function About() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:gap-14 px-4 md:px-6 md:grid-cols-2 md:items-start">
         <div className="relative h-[320px] md:h-[520px] w-full overflow-hidden rounded-xl">
           <Image
-            src={fallbackImage}
+            src="https://res.cloudinary.com/drpyepp9t/image/upload/v1776426065/Billets_Production_Wide_erkebq.jpg"
             alt={data.heading || "About Us"}
             fill
             priority
